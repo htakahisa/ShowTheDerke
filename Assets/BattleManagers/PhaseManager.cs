@@ -245,7 +245,7 @@ public class PhaseManager : NetworkBehaviour
 
         bool isHit = UnityEngine.Random.Range(1, 101) <= skill.accuracy * attacker.GetBattleDerkeStatus().accuracy * 0.01f;
 
-
+        yield return new WaitForSeconds(1f);
         RpcExecuteAttack(attacker.netIdentity, attacker.selectedMove, attacker, defender, isHit, skill, isSecond);
 
     }
@@ -444,6 +444,9 @@ public class PhaseManager : NetworkBehaviour
             if (status == "isAbility")
                 derkeStatus.isAbility = Convert.ToBoolean(value);
 
+            if (status == "effection")
+                derkeStatus.effection = value;
+
         }
 
     }
@@ -453,11 +456,12 @@ public class PhaseManager : NetworkBehaviour
         StartCoroutine(RandomCoroutine(value, maxCount, ID));
     }
 
+
     public IEnumerator RandomCoroutine(string value, string maxCount, string ID)
     {
         if (NetworkServer.spawned.TryGetValue(uint.Parse(ID), out NetworkIdentity identity))
         {
-            for (int count = 0; count < UnityEngine.Random.Range(1, int.Parse(maxCount)); count++)
+            for (int count = 0; count < UnityEngine.Random.Range(1, int.Parse(maxCount) + 1); count++)
             {
                 identity.GetComponent<PlayerData>().GetBattleDerkeStatus().hp += int.Parse(value);
                 yield return new WaitForSeconds(0.5f);

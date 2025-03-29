@@ -10,29 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0bc49c2a771f0604fb66216cf6149b57, type: 3}
-  m_Name: Entwine
+  m_Name: NewMove
   m_EditorClassIdentifier: 
-  moveName: Entwine
-  callTiming:
-  - AfterAttack
-  callMethod:
-  - RandomDamage
-  methodValue1:
-  - -30
-  methodValue2:
-  - 5
-  methodValue3:
-  - false
-  textCode:
-  - attacker
-  - "\u306E"
-  - attackName
-  - '!'
-  - "\u4F55\u56DE\u5F53\u305F\u308B\u304B\u306A\uFF1F"
-  moveTextName: "\u7E8F\u308F\u308A\u3064\u304F"
+  moveName: 
+  callTiming: []
+  callMethod: []
+  methodValue1: []
+  methodValue2: []
+  methodValue3: []
+  textCode: []
+  moveTextName: 
   power: 0
-  accuracy: 100
-  pp: 20
+  accuracy: 0
+  pp: 0
   speed: 0
-  type: 3
-  needAbility: 1
+  type: 0
+  needAbility: 0

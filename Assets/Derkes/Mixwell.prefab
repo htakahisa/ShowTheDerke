@@ -104,15 +104,16 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  maxHp: 80
-  hp: 80
-  speed: 30
+  maxHp: 90
+  hp: 90
+  speed: 50
   attack: 150
   defensive: 180
   accuracy: 150
   isAlive: 1
   isAbility: 1
   type: 0
+  effection: 
   skill:
   - Sucking
   - Entwine

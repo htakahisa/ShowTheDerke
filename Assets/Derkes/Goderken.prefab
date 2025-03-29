@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8481633549873478188}
   - component: {fileID: -8053383630478674764}
   m_Layer: 0
-  m_Name: EleStfake
+  m_Name: Omoko
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,21 +104,20 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  maxHp: 100
-  hp: 100
-  speed: 40
-  attack: 140
-  defensive: 130
+  maxHp: 80
+  hp: 80
+  speed: 150
+  attack: 80
+  defensive: 90
   accuracy: 100
   isAlive: 1
   isAbility: 1
-  type: 6
-  effection: 
+  type: 5
   skill:
-  - HealInHeel
-  - FireSpike
+  - LaughInRough
+  - Punch
   - AsTheWind
-  - BindCurse
+  - Somersault
 --- !u!114 &-8053383630478674764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneId: 0
-  _assetId: 905946464
+  _assetId: 1850324974
   serverOnly: 0
   visibility: 0
   hasSpawned: 0

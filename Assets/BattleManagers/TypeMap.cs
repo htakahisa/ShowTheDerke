@@ -27,7 +27,7 @@ public class TypeMap
 
         effectList.Add(Tuple.Create(SpecificType.WIND, SpecificType.FIRE, "y–Ò‰Îz"));
 
-        effectList.Add(Tuple.Create(SpecificType.FIRE, SpecificType.FIRE, "yŒFŒF—ó‰Îz"));
+        effectList.Add(Tuple.Create(SpecificType.FIRE, SpecificType.FIRE, "y—ó‰Îz"));
 
         effectList.Add(Tuple.Create(SpecificType.FIRE, SpecificType.ICE, "y—n‰ğz"));
 
@@ -41,16 +41,26 @@ public class TypeMap
 
         effectList.Add(Tuple.Create(SpecificType.WIND, SpecificType.WIND, "y—³Šªz"));
 
+        effectList.Add(Tuple.Create(SpecificType.LEAF, SpecificType.WIND, "y•——Ñz"));
+
         effectList.Add(Tuple.Create(SpecificType.WATER, SpecificType.LEAF, "yŠJ‰Ôz"));
 
         effectList.Add(Tuple.Create(SpecificType.FIRE, SpecificType.LEAF, "y”RÄz"));
 
         effectList.Add(Tuple.Create(SpecificType.WIND, SpecificType.LEAF, "y•—‰Ôz"));
 
-        evolutionList.Add(Tuple.Create(SpecificType.WIND, "yŠÃ‰Jz", "y‹óèÏ‰Jz"));
+        evolutionList.Add(Tuple.Create(SpecificType.WIND, "yŠÃ‰Jz", "y–P™€ŠÃ‰Jz"));
+
+        evolutionList.Add(Tuple.Create(SpecificType.FIRE, "yŠÃ‰Jz", "yˆ¨àÕ—ØŒçz"));
 
         evolutionList.Add(Tuple.Create(SpecificType.WATER, "yŠJ‰Ôz", "yŒ…ŠJ‰Ôz"));
+
+        evolutionList.Add(Tuple.Create(SpecificType.FIRE, "y—ó‰Îz", "yŒFŒF‰Š‰Šz"));
+
+        evolutionList.Add(Tuple.Create(SpecificType.FIRE, "y•——Ñz", "y•——é‰Øœğz"));
+
     }
+
 
 
 

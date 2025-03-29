@@ -20,7 +20,7 @@ MonoBehaviour:
   methodValue1:
   - hp
   methodValue2:
-  - 50
+  - 40
   methodValue3:
   - true
   textCode:
@@ -35,5 +35,5 @@ MonoBehaviour:
   accuracy: 90
   pp: 15
   speed: 0
-  type: water
+  type: 0
   needAbility: 1

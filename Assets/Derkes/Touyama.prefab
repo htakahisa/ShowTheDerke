@@ -101,14 +101,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c9d6a3d2ad2a74d80f837cf452b3eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 150
-  hp: 150
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  maxHp: 120
+  hp: 120
   speed: 50
   attack: 100
   defensive: 100
   accuracy: 100
   isAlive: 1
   isAbility: 1
+  type: 4
+  effection: 
   skill:
   - LaughInRough
   - Punch
