@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bc49c2a771f0604fb66216cf6149b57, type: 3}
+  m_Name: LuckyLuck
+  m_EditorClassIdentifier: 
+  moveName: LuckyLuck
+  callTiming:
+  - nothing
+  callMethod:
+  - nothing
+  methodValue1:
+  - 0
+  methodValue2:
+  - 0
+  methodValue3:
+  - 
+  textCode:
+  - attacker
+  - "\u306E"
+  - attackName
+  - '!'
+  - attacker
+  - "\u304C\u8EE2\u3093\u3067\u3076\u3063\u98DB\u3073\u3001\u5947\u8DE1\u7684\u306B\u76F8\u624B\u306B\u982D\u7A81\u304D\u304C\u5165\u3063\u305F\uFF01"
+  moveTextName: "\u5F37\u904B\uFF01"
+  power: 150
+  accuracy: 50
+  pp: 5
+  speed: 1
+  type: 4
+  needAbility: 0

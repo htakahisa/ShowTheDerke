@@ -1,0 +1,101 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+public class TypeMap
+{
+
+    private List<Tuple<SpecificType, SpecificType, string>> effectList = new List<Tuple<SpecificType, SpecificType, string>>();
+    private List<Tuple<SpecificType, string, string>> evolutionList = new List<Tuple<SpecificType, string, string>>();
+
+    public TypeMap()
+    {
+
+
+        effectList.Add(Tuple.Create(SpecificType.THUNDER, SpecificType.WATER, "Åyä¥ìdÅz"));
+
+        effectList.Add(Tuple.Create(SpecificType.FIRE, SpecificType.WATER, "Åyèˆî≠Åz"));
+
+        effectList.Add(Tuple.Create(SpecificType.ICE, SpecificType.WATER, "ÅyìÄåãÅz"));
+
+        effectList.Add(Tuple.Create(SpecificType.FIRE, SpecificType.THUNDER, "ÅyçÇïââ◊Åz"));
+
+        effectList.Add(Tuple.Create(SpecificType.ICE, SpecificType.THUNDER, "Åyí¥ì`ì±Åz"));
+
+        effectList.Add(Tuple.Create(SpecificType.WATER, SpecificType.FIRE, "Åyí¡âŒÅz"));
+
+        effectList.Add(Tuple.Create(SpecificType.WIND, SpecificType.FIRE, "Åyñ“âŒÅz"));
+
+        effectList.Add(Tuple.Create(SpecificType.FIRE, SpecificType.FIRE, "ÅyåFåFóÛâŒÅz"));
+
+        effectList.Add(Tuple.Create(SpecificType.FIRE, SpecificType.ICE, "ÅyónâÅz"));
+
+        effectList.Add(Tuple.Create(SpecificType.WATER, SpecificType.ICE, "Åyä√âJÅz"));
+
+        effectList.Add(Tuple.Create(SpecificType.WATER, SpecificType.ROCK, "ÅyêNêHÅz"));
+
+        effectList.Add(Tuple.Create(SpecificType.ROCK, SpecificType.ROCK, "ÅyïˆâÛÅz"));
+
+        effectList.Add(Tuple.Create(SpecificType.ICE, SpecificType.WIND, "ÅyË¬Åz"));
+
+        effectList.Add(Tuple.Create(SpecificType.WIND, SpecificType.WIND, "Åyó≥ä™Åz"));
+
+        effectList.Add(Tuple.Create(SpecificType.WATER, SpecificType.LEAF, "ÅyäJâ‘Åz"));
+
+        effectList.Add(Tuple.Create(SpecificType.FIRE, SpecificType.LEAF, "ÅyîRèƒÅz"));
+
+        effectList.Add(Tuple.Create(SpecificType.WIND, SpecificType.LEAF, "Åyïóâ‘Åz"));
+
+        evolutionList.Add(Tuple.Create(SpecificType.WIND, "Åyä√âJÅz", "ÅyãÛËœâJÅz"));
+
+        evolutionList.Add(Tuple.Create(SpecificType.WATER, "ÅyäJâ‘Åz", "ÅyêåêÖäJâ‘Åz"));
+    }
+
+
+
+    public Tuple<float, string> getEffect(SpecificType fromType, SpecificType toType)
+    {
+        Tuple<SpecificType, SpecificType> valueTuple = Tuple.Create(fromType, toType);
+        
+        foreach (Tuple<SpecificType, SpecificType, string> t in effectList)
+        {
+            if (t.Item1 == valueTuple.Item1 && t.Item2 == valueTuple.Item2)
+            {
+                return Tuple.Create(1.5f, t.Item3);
+            }
+        }
+
+        return Tuple.Create(1.0f, "");
+    }
+
+    public Tuple<float, string> getEvolution(SpecificType fromType, string toEffect)
+    {
+        Tuple<SpecificType, string> valueTuple = Tuple.Create(fromType, toEffect);
+
+        foreach (Tuple<SpecificType, string, string> t in evolutionList)
+        {
+            if (t.Item1 == valueTuple.Item1 && t.Item2 == valueTuple.Item2)
+            {
+                return Tuple.Create(2f, t.Item3);
+            }
+        }
+
+        return Tuple.Create(1.0f, "");
+    }
+
+    public enum SpecificType
+    {
+        WATER,
+        THUNDER,
+        FIRE,
+        ICE,
+        ROCK,
+        WIND,
+        LEAF,
+        OTHER,
+    }
+
+
+
+}

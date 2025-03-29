@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bc49c2a771f0604fb66216cf6149b57, type: 3}
+  m_Name: HealInHeel
+  m_EditorClassIdentifier: 
+  moveName: HealInHeel
+  callTiming:
+  - BeforeAttack
+  callMethod:
+  - SetStatus
+  methodValue1:
+  - hp
+  methodValue2:
+  - 50
+  methodValue3:
+  - true
+  textCode:
+  - attacker
+  - "\u306E"
+  - attackName
+  - '!'
+  - attacker
+  - "\u306E\u4F53\u529B\u304C\u56DE\u5FA9\u3057\u305F!"
+  moveTextName: "\u30D2\u30FC\u30EB\u30A4\u30F3\u30D2\u30FC\u30EB"
+  power: 0
+  accuracy: 100
+  pp: 5
+  speed: 0
+  type: 7
+  needAbility: 1

@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bc49c2a771f0604fb66216cf6149b57, type: 3}
+  m_Name: KickOff
+  m_EditorClassIdentifier: 
+  moveName: KickOff
+  callTiming:
+  - BeforeAttack
+  - BeforeAttack
+  callMethod:
+  - SetStatus
+  - SetStatus
+  methodValue1:
+  - speed
+  - attack
+  methodValue2:
+  - 30
+  - 30
+  methodValue3:
+  - true
+  - true
+  textCode:
+  - attacker
+  - "\u306E"
+  - attackName
+  - '!'
+  - attacker
+  - "\u306F\u7D20\u65E9\u3055\u3068\u653B\u6483\u529B\u304C\u5C11\u3057\u4E0A\u304C\u3063\u305F!"
+  moveTextName: "\u30AD\u30C3\u30AF\u30AA\u30D5"
+  power: 0
+  accuracy: 100
+  pp: 15
+  speed: 0
+  type: 7
+  needAbility: 1

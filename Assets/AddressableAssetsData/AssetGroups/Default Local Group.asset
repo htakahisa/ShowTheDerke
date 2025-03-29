@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_GUID: b0f767f3863d24445b46fcc9ec54a097
+  m_SerializeEntries:
+  - m_GUID: 0a689dbf6337f6546a1862fc1f682b00
+    m_Address: null
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0cd715a745096024694126fbe3601158
+    m_Address: Touyama
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 12765bb0e0d93784a95d7101923513e2
+    m_Address: Omoko
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 81b971d4588957f49a1ad7e92984d351
+    m_Address: Omoko
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - prefab
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92771ce032863404693dfc05f647bd10
+    m_Address: Touyama
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - prefab
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9998bc2b1068b3048946ed59322a3819
+    m_Address: Mixwell
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - prefab
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a41d6f19a5550014c9518e6d4ac276de
+    m_Address: Mixwell
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d2b12b581e5886a41824f15318118975
+    m_Address: EleStfake
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc72c1d74726a8e4c82693d05905fab1
+    m_Address: EleStfake
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - prefab
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: aafee03a07d550a4f81f459ace39d0f6, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c9faf4288a7afda45bcf0113390867d6, type: 2}
+    - {fileID: 11400000, guid: 9a1ae9e284bc65d409a51473ace70d4e, type: 2}
