@@ -278,15 +278,15 @@ public class PhaseManager : NetworkBehaviour
             for (int i = 0; i < skill.textCode.Count; i++)
             {
                 string code = "";
-                if (skill.textCode[i] == "attacker")
+                if (skill.textCode[i] == "attacker" && attacker != null)
                 {
                     code = attacker.GetBattleDerke().name;
                 }
-                else if (skill.textCode[i] == "defender")
+                else if (skill.textCode[i] == "defender" && defender != null)
                 {
                     code = defender.GetBattleDerke().name;
                 }
-                else if (skill.textCode[i] == "attackName")
+                else if (skill.textCode[i] == "attackName" && skill != null)
                 {
                     code = skill.moveTextName;
                 }
