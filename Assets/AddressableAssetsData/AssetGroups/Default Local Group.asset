@@ -33,6 +33,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - sprite
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 25de3f49e11e91c47b810241af51a8b8
+    m_Address: Jumper
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - prefab
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 730d3672174925242a177f6e3f5803eb
+    m_Address: Jumper
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - sprite
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 81b971d4588957f49a1ad7e92984d351
     m_Address: Omoko
     m_ReadOnly: 0
