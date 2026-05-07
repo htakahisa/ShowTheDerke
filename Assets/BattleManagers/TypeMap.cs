@@ -19,6 +19,8 @@ public class TypeMap
 
         effectList.Add(Tuple.Create(SpecificType.ICE, SpecificType.WATER, "y“€Œ‹z"));
 
+        effectList.Add(Tuple.Create(SpecificType.PAIMON, SpecificType.WATER, "y‰Í“¶z"));
+
         effectList.Add(Tuple.Create(SpecificType.FIRE, SpecificType.THUNDER, "y‚•‰‰×z"));
 
         effectList.Add(Tuple.Create(SpecificType.ICE, SpecificType.THUNDER, "y’´“`“±z"));
@@ -29,9 +31,13 @@ public class TypeMap
 
         effectList.Add(Tuple.Create(SpecificType.FIRE, SpecificType.FIRE, "y—ó‰Îz"));
 
+        effectList.Add(Tuple.Create(SpecificType.PAIMON, SpecificType.FIRE, "y‹S‰Îz"));
+
         effectList.Add(Tuple.Create(SpecificType.FIRE, SpecificType.ICE, "y—n‰ğz"));
 
         effectList.Add(Tuple.Create(SpecificType.WATER, SpecificType.ICE, "yŠÃ‰Jz"));
+
+        effectList.Add(Tuple.Create(SpecificType.PAIMON, SpecificType.ICE, "yá—z"));
 
         effectList.Add(Tuple.Create(SpecificType.WATER, SpecificType.ROCK, "yNHz"));
 
@@ -43,11 +49,15 @@ public class TypeMap
 
         effectList.Add(Tuple.Create(SpecificType.LEAF, SpecificType.WIND, "y•——Ñz"));
 
+        effectList.Add(Tuple.Create(SpecificType.PAIMON, SpecificType.WIND, "yŠ™êŒz"));
+
         effectList.Add(Tuple.Create(SpecificType.WATER, SpecificType.LEAF, "yŠJ‰Ôz"));
 
         effectList.Add(Tuple.Create(SpecificType.FIRE, SpecificType.LEAF, "y”RÄz"));
 
         effectList.Add(Tuple.Create(SpecificType.WIND, SpecificType.LEAF, "y•—‰Ôz"));
+
+        effectList.Add(Tuple.Create(SpecificType.PAIMON, SpecificType.PAIMON, "y‰ƒz"));
 
         evolutionList.Add(Tuple.Create(SpecificType.WIND, "yŠÃ‰Jz", "y–P™€ŠÃ‰Jz"));
 
@@ -58,6 +68,10 @@ public class TypeMap
         evolutionList.Add(Tuple.Create(SpecificType.FIRE, "y—ó‰Îz", "yŒFŒF‰Š‰Šz"));
 
         evolutionList.Add(Tuple.Create(SpecificType.FIRE, "y•——Ñz", "y•——é‰Øœğz"));
+
+        evolutionList.Add(Tuple.Create(SpecificType.WIND, "y—³Šªz", "y•V”ò•T—´z"));
+
+        evolutionList.Add(Tuple.Create(SpecificType.PAIMON, "y‰ƒz", "yÌƒm—d‰ö‘åW‡z"));
 
     }
 
@@ -103,6 +117,7 @@ public class TypeMap
         ROCK,
         WIND,
         LEAF,
+        PAIMON,
         OTHER,
     }
 

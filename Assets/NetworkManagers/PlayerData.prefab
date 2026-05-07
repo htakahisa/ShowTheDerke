@@ -52,7 +52,7 @@ MonoBehaviour:
   netIdentity: {fileID: 5341954342131917074}
   selectedMove: 
   BattleDerke: {fileID: 0}
-  isReady: 0
+  Shadows: 500
 --- !u!114 &5341954342131917074
 MonoBehaviour:
   m_ObjectHideFlags: 0

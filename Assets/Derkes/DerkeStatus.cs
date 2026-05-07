@@ -17,13 +17,19 @@ public class DerkeStatus : NetworkBehaviour
     [SyncVar]
     public int accuracy = 100;
     [SyncVar]
+    public AbilityDictionary ability;
+    [SyncVar]
     public bool isAlive = true;
     [SyncVar]
     public bool isAbility = true;
     [SyncVar]
+    public bool canEscape = true;
+    [SyncVar]
     public TypeMap.SpecificType type = TypeMap.SpecificType.OTHER;
     [SyncVar]
     public string effection = "";
+    [SyncVar]
+    public bool hasEntryProcess = false;
 
     public List<string> skill = new List<string>();
 

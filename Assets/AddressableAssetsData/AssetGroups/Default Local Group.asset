@@ -22,61 +22,85 @@ MonoBehaviour:
     - sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0cd715a745096024694126fbe3601158
-    m_Address: Touyama
+    m_Address: "\u3068\u3046\u3084\u307E"
     m_ReadOnly: 0
     m_SerializedLabels:
     - sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 12765bb0e0d93784a95d7101923513e2
-    m_Address: Omoko
+    m_Address: "\u304A\u3082\u3053"
     m_ReadOnly: 0
     m_SerializedLabels:
     - sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 25de3f49e11e91c47b810241af51a8b8
-    m_Address: Jumper
+    m_Address: "\u30B8\u30E3\u30F3\u30D1\u30FC"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - prefab
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 406c23ae43edbdb4bbec6101424b9017
+    m_Address: "\u6697\u9ED2\u60AA\u771F\u541B"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - prefab
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 60053f5fe2c21f64ca9787ba76f06d66
+    m_Address: "\u30F4\u30A3\u30AA\u30EB\u30FB\u30EC\u30AA"
     m_ReadOnly: 0
     m_SerializedLabels:
     - prefab
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 730d3672174925242a177f6e3f5803eb
-    m_Address: Jumper
+    m_Address: "\u30B8\u30E3\u30F3\u30D1\u30FC"
     m_ReadOnly: 0
     m_SerializedLabels:
     - sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 81b971d4588957f49a1ad7e92984d351
-    m_Address: Omoko
+    m_Address: "\u304A\u3082\u3053"
     m_ReadOnly: 0
     m_SerializedLabels:
     - prefab
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 92771ce032863404693dfc05f647bd10
-    m_Address: Touyama
+    m_Address: "\u3068\u3046\u3084\u307E"
     m_ReadOnly: 0
     m_SerializedLabels:
     - prefab
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9998bc2b1068b3048946ed59322a3819
-    m_Address: Mixwell
+    m_Address: "\u30DF\u30AF\u30B9\u30A6\u30A7\u30EB"
     m_ReadOnly: 0
     m_SerializedLabels:
     - prefab
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a41d6f19a5550014c9518e6d4ac276de
-    m_Address: Mixwell
+    m_Address: "\u30DF\u30AF\u30B9\u30A6\u30A7\u30EB"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bbc02d843d43f5f48ac0b1ed4ed9d56e
+    m_Address: "\u6697\u9ED2\u60AA\u771F\u541B"
     m_ReadOnly: 0
     m_SerializedLabels:
     - sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d2b12b581e5886a41824f15318118975
-    m_Address: EleStfake
+    m_Address: "\u30A8\u30EC\u30B9\u30C8\u30D5\u30A7\u30A4\u30AF"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - sprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fad6bad0709a01740b05d9e06c106beb
+    m_Address: "\u30F4\u30A3\u30AA\u30EB\u30FB\u30EC\u30AA"
     m_ReadOnly: 0
     m_SerializedLabels:
     - sprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fc72c1d74726a8e4c82693d05905fab1
-    m_Address: EleStfake
+    m_Address: "\u30A8\u30EC\u30B9\u30C8\u30D5\u30A7\u30A4\u30AF"
     m_ReadOnly: 0
     m_SerializedLabels:
     - prefab

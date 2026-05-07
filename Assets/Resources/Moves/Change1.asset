@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Change1
   m_EditorClassIdentifier: 
   moveName: Change1
-  callTiming:
-  - TurnOrder
+  callTiming: 00000000
   callMethod:
   - SetBattleDerke
   methodValue1:
@@ -22,14 +21,19 @@ MonoBehaviour:
   methodValue2:
   - 1
   methodValue3:
-  - true
+  - myId
+  abilityTextCode:
+  - list:
+    - attacker
+    - "\u306E"
+    - "\u4EA4\u4EE3"
   textCode:
   - attacker
-  - "\u306E\u4EA4\u4EE3\uFF01"
+  - "\u304C\u767B\u5834\u3057\u305F"
   moveTextName: 
   power: 0
-  accuracy: 100
+  accuracy: 10000
   pp: 0
   speed: 5
-  type: 7
+  type: 8
   needAbility: 1

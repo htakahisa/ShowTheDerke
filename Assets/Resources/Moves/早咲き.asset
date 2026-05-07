@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bc49c2a771f0604fb66216cf6149b57, type: 3}
+  m_Name: "\u65E9\u54B2\u304D"
+  m_EditorClassIdentifier: 
+  moveName: "\u65E9\u54B2\u304D"
+  callTiming: 04000000
+  callMethod:
+  - SetStatus
+  methodValue1:
+  - speed
+  methodValue2:
+  - -50
+  methodValue3:
+  - enemyId
+  textCode:
+  - attacker
+  - "\u306E"
+  - attackName
+  - '!'
+  - attacker
+  - "\u306F\u76F8\u624B\u306E\u4E88\u60F3\u4EE5\u4E0A\u306E\u901F\u3055\u3067\u5C55\u958B\u3057\u305F!"
+  moveTextName: "\u65E9\u54B2\u304D"
+  power: 30
+  accuracy: 100
+  pp: 10
+  speed: 1
+  type: 6
+  needAbility: 0
