@@ -120,6 +120,7 @@ MonoBehaviour:
   canEscape: 1
   type: 7
   effection: 
+  hasEntryProcess: 0
   skill:
   - "\u5168\u970A\u63EE\u5200"
   - "\u30F4\u30A3\u30AA\u30EB"

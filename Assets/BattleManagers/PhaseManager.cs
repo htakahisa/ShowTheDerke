@@ -5,8 +5,10 @@ using NUnit.Framework.Internal;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Security.Principal;
 using System.Threading.Tasks;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PhaseManager : NetworkBehaviour
@@ -103,6 +105,11 @@ public class PhaseManager : NetworkBehaviour
 
     void InvokeMethodByName(string methodName, string arg1, string arg2, string arg3)
     {
+        if(methodName == "nothing")
+        {
+            return;
+        }
+
         // Action ではなく Func<..., UniTask> で受け取る
         if (methodDictionary.TryGetValue(methodName, out Func<string, string, string, UniTask> method))
         {
@@ -171,52 +178,42 @@ public class PhaseManager : NetworkBehaviour
 
         for (int t = 0; t < 2; t++)
         {
+
+
+            SkillDictionary method = SkillDatabase.GetMove(attacker.selectedMove);
+
+
             if (attacker.GetBattleDerke() == null || attacker.GetBattleDerkeStatus().canEscape || attacker.GetBattleDerkeStatus().isAbility || attacker.GetBattleDerkeStatus().hp <= 0)
             {
 
-                await UniTask.Delay(1000);
-
-                SkillDictionary method = SkillDatabase.GetMove(attacker.selectedMove);
-                //DerkeStatus derkeStatus = identity.GetComponent<PlayerData>().GetBattleDerkeStatus();
-
-                //SkillDictionary method = null;
-                //for (int i = 0; i < derkeStatus.ability.skill.Count; i++)
-                //{
-                //    method = derkeStatus.ability.skill[i];
-
-                //    if (NetworkServer.spawned.TryGetValue(uint.Parse(ID), out NetworkIdentity methodID))
-                //    {
-                //        PlayerData methodPlayerData = methodID.GetComponent<PlayerData>();
-                //        ActiveEffect(SkillDictionary.Timing.ENTRY, method, methodPlayerData, identity == player1 ? player2 : player1);
-                //    }
-                //}
-                //if(attacker.GetBattleDerkeStatus().ability.callTiming == )
-                ActiveEffect(SkillDictionary.Timing.ENTRY, method, attacker, defender);
-                ActiveEffect(SkillDictionary.Timing.CHANGEDERKE, method, attacker, defender);
-                ActiveEffect(SkillDictionary.Timing.TURNORDER, method, attacker, defender);
-
+                await ActiveEffect(SkillDictionary.Timing.CHANGEDERKE, method, attacker, defender);
+                await ActiveEffect(SkillDictionary.Timing.TURNORDER, method, attacker, defender);
 
             }
+
+
             attacker = second;
             defender = first;
-        }
 
-        StartCoroutine(ExecuteTurn(first, second));
+        }
+        
+
+        await ExecuteTurn(first, second);
     }
 
-    private IEnumerator ExecuteTurn(PlayerData attacker, PlayerData defender)
+    private async UniTask ExecuteTurn(PlayerData attacker, PlayerData defender)
     {
-        StartCoroutine(ServerExecuteAttack(attacker.netIdentity, attacker.selectedMove, attacker, defender, false));
+        await ServerExecuteAttack(attacker.netIdentity, attacker.selectedMove, attacker, defender, false);
 
-        yield return new WaitForSeconds(3f);
+        await UniTask.Delay(2000);
 
         if (defender.BattleDerke == null)
         {
-            StartCoroutine(ServerExecuteAttack(defender.netIdentity, defender.selectedMove, defender, attacker, true));
+            await ServerExecuteAttack(defender.netIdentity, defender.selectedMove, defender, attacker, true);
         }
         else if (defender.GetBattleDerkeStatus().hp > 0)
         {
-            StartCoroutine(ServerExecuteAttack(defender.netIdentity, defender.selectedMove, defender, attacker, true));
+            await ServerExecuteAttack(defender.netIdentity, defender.selectedMove, defender, attacker, true);
         }
 
         if (attacker.GetBattleDerkeStatus() != null)
@@ -238,8 +235,8 @@ public class PhaseManager : NetworkBehaviour
 
     }
 
-
-    public IEnumerator ServerExecuteAttack(NetworkIdentity player, string move, PlayerData attacker, PlayerData defender, bool isSecond)
+    [Server]
+    public async UniTask ServerExecuteAttack(NetworkIdentity player, string move, PlayerData attacker, PlayerData defender, bool isSecond)
     {
         // ここでダメージ計算やアニメーションを実装
         SkillDictionary skill = SkillDatabase.GetMove(move);
@@ -247,10 +244,12 @@ public class PhaseManager : NetworkBehaviour
         {
             if (attacker.GetBattleDerkeStatus().isAbility)
             {
-                ActiveEffect(SkillDictionary.Timing.BEFOREATTACK, skill, attacker, defender);
+                await ActiveEffect(SkillDictionary.Timing.BEFOREATTACK, skill, attacker, defender);
             }
         }
-        yield return new WaitForSeconds(1f);
+
+        await UniTask.Delay(1000);
+
         if (defender != null && defender.GetBattleDerkeStatus() != null)
         {
             if (defender.GetBattleDerkeStatus() != null)
@@ -275,15 +274,8 @@ public class PhaseManager : NetworkBehaviour
             isHit = UnityEngine.Random.Range(1, 101) <= skill.accuracy * attacker.GetBattleDerkeStatus().accuracy * 0.01f;
         }
 
-        yield return new WaitForSeconds(1f);
-        RpcExecuteAttack(attacker.netIdentity, attacker.selectedMove, attacker, defender, isHit, skill, isSecond);
+        await UniTask.Delay(1000);
 
-    }
-
-
-    [ClientRpc]
-    public void RpcExecuteAttack(NetworkIdentity player, string move, PlayerData attacker, PlayerData defender, bool isHit, SkillDictionary skill, bool isSecond)
-    {
         TypeMap typeMap = new TypeMap();
 
 
@@ -302,22 +294,21 @@ public class PhaseManager : NetworkBehaviour
             defender.GetBattleDerkeStatus().hp -= (int)((float)(skill.power + attacker.GetBattleDerkeStatus().attack - defender.GetBattleDerkeStatus().defensive) * 0.8f * effectBonus * evolutionBonus);
         }
 
- 
+
         string text = "";
 
 
 
         if (isHit)
         {
-
             for (int i = 0; i < skill.textCode.Count; i++)
             {
                 string code = "";
-                if (skill.textCode[i] == "attacker" && attacker != null)
+                if (attacker.GetBattleDerke() != null && skill.textCode[i] == "attacker" && attacker.GetBattleDerke() != null)
                 {
                     code = attacker.GetBattleDerke().name;
                 }
-                else if (skill.textCode[i] == "defender" && defender != null)
+                else if (defender.GetBattleDerke() != null && skill.textCode[i] == "defender" && defender != null)
                 {
                     code = defender.GetBattleDerke().name;
                 }
@@ -334,7 +325,7 @@ public class PhaseManager : NetworkBehaviour
 
             }
 
-            
+
 
 
         }
@@ -350,25 +341,24 @@ public class PhaseManager : NetworkBehaviour
 
         if (defender != null && defender.GetBattleDerkeStatus() != null && isHit && effect != null && evolution != null)
         {
-           
+
             if (effect.Item2 != "")
             {
                 text += effect.Item2;
                 defender.GetBattleDerkeStatus().effection = effect.Item2;
             }
             if (evolution.Item2 != "")
-            {               
+            {
                 text += evolution.Item2;
             }
         }
-       
 
-        BattleTextManager.btm.SetText(text);
 
+        BattleTextManager.btm.ServerSetText(text);
 
         if (isServer && attacker.GetBattleDerkeStatus().isAbility)
         {
-            ActiveEffect(SkillDictionary.Timing.AFTERATTACK, skill, attacker, defender);
+            await ActiveEffect(SkillDictionary.Timing.AFTERATTACK, skill, attacker, defender);
         }
 
         if (skill.type != TypeMap.SpecificType.OTHER)
@@ -391,6 +381,15 @@ public class PhaseManager : NetworkBehaviour
 
         }
 
+        //RpcExecuteAttack(attacker.netIdentity, attacker.selectedMove, attacker, defender, isHit, skill, isSecond);
+    }
+
+
+    [ClientRpc]
+    public void RpcExecuteAttack(NetworkIdentity player, string move, PlayerData attacker, PlayerData defender, bool isHit, SkillDictionary skill, bool isSecond)
+    {
+
+
     }
 
     [Server]
@@ -409,14 +408,58 @@ public class PhaseManager : NetworkBehaviour
         ChangeBattleDerke.cbd.SetCanPress(true);
     }
 
-    public void ActiveEffect(SkillDictionary.Timing timing , SkillDictionary skill, PlayerData attacker, PlayerData defender)
+    public async UniTask ActiveAbility(SkillDictionary.Timing timing, AbilityDictionary ability, SkillDictionary skill, PlayerData attacker, PlayerData defender)
     {
+        string text = "";
+
+        for (int index = 0; index < ability.textCode.Count; index++)
+        {
+            string code = "";
+            if (ability.textCode[index] == "attacker" && attacker != null)
+            {
+                code = attacker.GetBattleDerke().name;
+            }
+            else if (ability.textCode[index] == "defender" && defender != null)
+            {
+                code = defender.GetBattleDerke().name;
+            }
+            else if (ability.textCode[index] == "attackName" && skill != null)
+            {
+                code = skill.moveTextName;
+            }
+            else
+            {
+                code = ability.textCode[index];
+            }
+
+            text += code;
+
+        }
+
+        BattleTextManager.btm.ServerSetText(text);
+
+        await UniTask.Delay(1000);
+
+        await ActiveEffect(timing, skill, attacker, defender);
+    }
+
+
+    public async UniTask ActiveEffect(SkillDictionary.Timing timing, SkillDictionary skill, PlayerData attacker, PlayerData defender)
+    {
+        await UniTask.Delay(1000);
+
         if (skill != null)
         {
             for (int i = 0; i < skill.callMethod.Count; i++)
             {
                 if (skill.callTiming[i] == timing)
                 {
+
+                    if (skill.callMethod[i] == "nothing")
+                    {
+                        break;
+                    }
+
                     string first = skill.methodValue1[i];
                     string second = skill.methodValue2[i];
                     string third = skill.methodValue3[i];
@@ -450,7 +493,7 @@ public class PhaseManager : NetworkBehaviour
                     InvokeMethodByName(skill.callMethod[i], first, second, third);
                     string text = "";
 
-                    for (int index = 0; index < skill.abilityTextCode.Count; index++)
+                    for (int index = 0; index < skill.abilityTextCode[i].list.Count; index++)
                     {
                         string code = "";
                         if (skill.abilityTextCode[i].list[index] == "attacker" && attacker != null)
@@ -474,12 +517,9 @@ public class PhaseManager : NetworkBehaviour
 
                     }
 
-                    if (attacker.BattleDerke != null && !attacker.GetBattleDerkeStatus().isAbility && skill.needAbility)
-                    {
-                        text = attacker.GetBattleDerke().name + "の" + skill.moveTextName + "は呪いによって効果が無効化された...";
-                    }
+                    BattleTextManager.btm.ServerSetText(text);
 
-                    BattleTextManager.btm.SetText(text);
+                    await UniTask.Delay(2000);
 
                 }
             }
@@ -504,12 +544,34 @@ public class PhaseManager : NetworkBehaviour
 
                 if (!canEscape && pd.GetBattleDerkeStatus().hp > 0)
                 {
-                    BattleTextManager.btm.SetText(pd.GetBattleDerke().name + "は交代できない！");
+                    BattleTextManager.btm.ServerSetText(pd.GetBattleDerke().name + "は交代できない！");
                     return;                
                 }
                
             }
             pd.IfServerSetBattleDerke(number);
+
+            await UniTask.Delay(1000);
+
+            if (pd.GetBattleDerkeStatus() != null)
+            {
+
+                DerkeStatus derkeStatus = pd.GetBattleDerkeStatus();
+                if (derkeStatus.ability != null)
+                {
+                    if (!derkeStatus.hasEntryProcess)
+                    {
+                        derkeStatus.hasEntryProcess = true;
+                        await UniTask.Delay(500);
+
+                        for (int i = 0; i < derkeStatus.ability.skill.Count; i++)
+                        {
+                            await ActiveAbility(SkillDictionary.Timing.ENTRY, derkeStatus.ability, derkeStatus.ability.skill[i], pd, pd ? player1 : player2);
+                        }
+                    }
+                }
+            }
+
         }
 
     }
@@ -530,6 +592,9 @@ public class PhaseManager : NetworkBehaviour
             if (status == "hp")
             {
                 int hpValue = int.Parse(value);
+
+                foreach(var timing in derkeStatus.ability.callTiming)
+                if(timing == AbilityDictionary.Timing.HEAL)
 
                 if (derkeStatus.hp + hpValue > derkeStatus.maxHp)
                 {

@@ -25,11 +25,8 @@ MonoBehaviour:
   abilityTextCode:
   - list:
     - attacker
-    - "\u306E"
-    - "\u4EA4\u4EE3"
-  textCode:
-  - attacker
-  - "\u304C\u767B\u5834\u3057\u305F"
+    - "\u304C\u767B\u5834\u3057\u305F"
+  textCode: []
   moveTextName: 
   power: 0
   accuracy: 10000

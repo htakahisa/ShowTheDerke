@@ -22,7 +22,12 @@ MonoBehaviour:
   - 0
   methodValue3:
   - 
-  textCode: []
+  abilityTextCode: []
+  textCode:
+  - attacker
+  - "\u306E"
+  - attackName
+  - "\u5239\u90A3\u3092\u898B\u5207\u3063\u305F\uFF01"
   moveTextName: "\u5239\u90A3\u5207\u308A"
   power: 80
   accuracy: 95

@@ -22,15 +22,16 @@ MonoBehaviour:
   - -myHp
   methodValue3:
   - enemyId
+  abilityTextCode:
+  - list:
+    - attacker
+    - "\u306E\u4F53\u529B\u306E\u5206\u3060\u3051"
+    - defender
+    - "\u306B\u30C0\u30E1\u30FC\u30B8!"
   textCode:
   - attacker
   - "\u306E"
   - attackName
-  - '!'
-  - attacker
-  - "\u306E\u4F53\u529B\u306E\u5206\u3060\u3051"
-  - defender
-  - "\u306B\u30C0\u30E1\u30FC\u30B8!"
   moveTextName: "\u5168\u970A\u63EE\u5200"
   power: 0
   accuracy: 100

@@ -1,7 +1,8 @@
+using Mirror;
 using TMPro;
 using UnityEngine;
 
-public class BattleTextManager : MonoBehaviour
+public class BattleTextManager :  NetworkBehaviour
 {
 
     public TextMeshProUGUI Text;
@@ -20,7 +21,14 @@ public class BattleTextManager : MonoBehaviour
         
     }
 
-    public void SetText(string _text)
+    [Server]
+    public void ServerSetText(string _text)
+    {
+        RpcSetText(_text);
+    }
+
+    [ClientRpc]
+    public void RpcSetText(string _text)
     {
         Text.text = _text;
     }

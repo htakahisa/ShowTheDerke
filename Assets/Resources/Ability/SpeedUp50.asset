@@ -22,9 +22,11 @@ MonoBehaviour:
   - 50
   methodValue3:
   - myId
-  textCode:
-  - attacker
-  - "\u306E\u30B9\u30D4\u30FC\u30C9\u304C50\u4E0A\u6607\u3057\u305F!"
+  abilityTextCode:
+  - list:
+    - attacker
+    - "\u306E\u30B9\u30D4\u30FC\u30C9\u304C50\u4E0A\u6607\u3057\u305F!"
+  textCode: []
   moveTextName: "\u7D20\u65E9\u305550"
   power: 0
   accuracy: 10000

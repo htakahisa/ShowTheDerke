@@ -22,14 +22,15 @@ MonoBehaviour:
   - -20
   methodValue3:
   - enemyId
-  textCode:
-  - list:
-    - attacker
-    - "\u306E"
-    - attackName
+  abilityTextCode:
   - list:
     - defender
-    - "\u306E\u9632\u5FA1\u529B\u304C20\u4E0B\u304C\u3063\u305F"
+    - "\u306E"
+    - "\u9632\u5FA1\u529B\u304C\u4E0B\u304C\u3063\u305F"
+  textCode:
+  - attacker
+  - "\u306E"
+  - attackName
   moveTextName: "\u30D1\u30F3\u30C1"
   power: 50
   accuracy: 130

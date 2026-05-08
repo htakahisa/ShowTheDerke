@@ -22,9 +22,7 @@ MonoBehaviour:
   - 0
   methodValue3:
   - 
-  abilityTextCode:
-  - list:
-    - 
+  abilityTextCode: []
   textCode:
   - attacker
   - "\u306E"

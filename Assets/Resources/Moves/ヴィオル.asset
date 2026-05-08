@@ -26,15 +26,17 @@ MonoBehaviour:
   methodValue3:
   - myId
   - enemyId
+  abilityTextCode:
+  - list:
+    - attacker
+    - "\u306E\u9632\u5FA1\u529B\u304C\u4E0B\u304C\u3063\u305F"
+  - list:
+    - defender
+    - "\u306F\u6C17\u7D76\u3059\u308B\u307B\u3069\u306E\u885D\u6483\u3067\u52B9\u679C\u3092\u767A\u52D5\u3067\u304D\u306A\u304F\u306A\u3063\u305F!"
   textCode:
   - attacker
   - "\u306E"
   - attackName
-  - '!'
-  - attacker
-  - "\u306E\u9632\u5FA1\u529B\u306F\u4E0B\u304C\u3063\u305F\u3002\u305F\u3060\u3057"
-  - defender
-  - "\u306F\u6C17\u7D76\u3059\u308B\u307B\u3069\u306E\u885D\u6483\u3067\u52B9\u679C\u3092\u767A\u52D5\u3067\u304D\u306A\u304F\u306A\u3063\u305F!"
   moveTextName: "\u30F4\u30A3\u30AA\u30EB"
   power: 120
   accuracy: 100

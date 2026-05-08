@@ -110,15 +110,17 @@ MonoBehaviour:
   syncInterval: 0
   maxHp: 80
   hp: 80
-  speed: 125
-  attack: 140
-  defensive: 60
+  speed: 145
+  attack: 135
+  defensive: 90
   accuracy: 100
+  ability: {fileID: 0}
   isAlive: 1
   isAbility: 1
   canEscape: 1
   type: 2
   effection: 
+  hasEntryProcess: 0
   skill:
   - "\u65E9\u54B2\u304D"
   - "\u30B5\u30AF\u30E9\u30B5\u30AF"
