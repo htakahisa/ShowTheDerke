@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class DerkeSelectManager : MonoBehaviour
@@ -10,6 +11,8 @@ public class DerkeSelectManager : MonoBehaviour
 
     private PlayerData myData;
     private PlayerData enemyData;
+
+    public TextMeshProUGUI costText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -27,7 +30,7 @@ public class DerkeSelectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        costText.text = cost.ToString();
     }
 
     public void BuyDerke()

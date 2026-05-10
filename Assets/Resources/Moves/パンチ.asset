@@ -19,7 +19,7 @@ MonoBehaviour:
   methodValue1:
   - defensive
   methodValue2:
-  - -20
+  - -30
   methodValue3:
   - enemyId
   abilityTextCode:
@@ -33,8 +33,9 @@ MonoBehaviour:
   - attackName
   moveTextName: "\u30D1\u30F3\u30C1"
   power: 50
-  accuracy: 130
+  accuracy: 100
   pp: 20
   speed: 0
   type: 4
+  isAttack: 1
   needAbility: 1

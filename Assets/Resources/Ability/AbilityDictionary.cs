@@ -25,6 +25,7 @@ public class AbilityDictionary : ScriptableObject
         TURNORDER,
         BEFOREATTACK,
         AFTERATTACK,
-        HEAL
+        STATUSCHANGE,
+        BEFOREATTACKED,
     }
 }

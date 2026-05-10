@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579de24d8ec3f374896372288c24b8fa, type: 3}
+  m_Name: "\u56DE\u5FA9\u529B"
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Resources.Ability.AbilityDictionary
+  moveName: "\u56DE\u5FA9\u529B"
+  callTiming: 05000000
+  skill:
+  - {fileID: 11400000, guid: d53a432271782d94aa81d3bd4b77c092, type: 2}
+  textCode:
+  - attacker
+  - "\u306E\u56DE\u5FA9\u529B\u304C\u767A\u52D5\u3059\u308B\uFF01"
+  moveTextName: "\u56DE\u5FA9\u529B"
+  power: 0
+  accuracy: 100
+  speed: 0
+  type: 0
+  needAbility: 0

@@ -29,7 +29,7 @@ MonoBehaviour:
   abilityTextCode:
   - list:
     - attacker
-    - "\u306E\u9632\u5FA1\u529B\u304C\u4E0B\u304C\u3063\u305F"
+    - "\u306E\u9632\u5FA1\u529B\u304C\u5927\u5E45\u306B\u4E0B\u304C\u3063\u305F"
   - list:
     - defender
     - "\u306F\u6C17\u7D76\u3059\u308B\u307B\u3069\u306E\u885D\u6483\u3067\u52B9\u679C\u3092\u767A\u52D5\u3067\u304D\u306A\u304F\u306A\u3063\u305F!"
@@ -43,4 +43,5 @@ MonoBehaviour:
   pp: 15
   speed: 0
   type: 0
+  isAttack: 1
   needAbility: 1

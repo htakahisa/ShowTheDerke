@@ -30,11 +30,11 @@ MonoBehaviour:
   - list:
     - attacker
     - "\u306E"
-    - "\u653B\u6483\u529B\u304C30\u3042\u304C\u3063\u305F"
+    - "\u653B\u6483\u529B\u304C\u4E0A\u304C\u3063\u305F"
   - list:
     - attacker
     - "\u306E"
-    - "\u7D20\u65E9\u3055\u304C30\u3042\u304C\u3063\u305F"
+    - "\u7D20\u65E9\u3055\u304C\u4E0A\u304C\u3063\u305F"
   textCode:
   - attacker
   - "\u306E"

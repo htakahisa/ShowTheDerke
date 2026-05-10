@@ -27,11 +27,12 @@ MonoBehaviour:
   - attacker
   - "\u306E"
   - attackName
-  - "\u5239\u90A3\u3092\u898B\u5207\u3063\u305F\uFF01"
+  - "\u3002\u76F8\u624B\u306E\u96C6\u4E2D\u306E\u5207\u308C\u308B\u5239\u90A3\u3092\u898B\u5207\u3063\u305F\uFF01"
   moveTextName: "\u5239\u90A3\u5207\u308A"
   power: 80
-  accuracy: 95
+  accuracy: 100
   pp: 10
   speed: 2
   type: 7
+  isAttack: 1
   needAbility: 0

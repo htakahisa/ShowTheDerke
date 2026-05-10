@@ -19,14 +19,14 @@ MonoBehaviour:
   methodValue1:
   - accuracy
   methodValue2:
-  - -10
+  - -20
   methodValue3:
   - enemyId
   abilityTextCode:
   - list:
     - defender
     - "\u306E"
-    - "\u547D\u4E2D\u7387\u304C10\u4E0B\u304C\u3063\u305F"
+    - "\u547D\u4E2D\u7387\u304C\u5C11\u3057\u4E0B\u304C\u3063\u305F"
   textCode:
   - attacker
   - "\u306E"

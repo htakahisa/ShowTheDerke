@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0bc49c2a771f0604fb66216cf6149b57, type: 3}
-  m_Name: SpeedUp50
+  m_Name: EnemyAccuracyDown10
   m_EditorClassIdentifier: 
-  moveName: SpeedUp50
+  moveName: EnemyAccuracyDown10
   callTiming: 01000000
   callMethod:
   - SetStatus
   methodValue1:
-  - speed
+  - accuracy
   methodValue2:
-  - 50
+  - -10
   methodValue3:
-  - myId
+  - enemyId
   abilityTextCode:
   - list:
-    - attacker
-    - "\u306E\u7D20\u65E9\u3055\u304C\u4E0A\u304C\u3063\u305F\uFF01"
+    - defender
+    - "\u306E\u547D\u4E2D\u7387\u304C\u5C11\u3057\u4E0B\u304C\u3063\u305F\uFF01"
   textCode: []
-  moveTextName: "\u7D20\u65E9\u305550"
+  moveTextName: "\u6575\u547D\u4E2D\u7387-10"
   power: 0
   accuracy: 10000
   pp: 10

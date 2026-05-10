@@ -15,7 +15,7 @@ MonoBehaviour:
   moveName: "\u7D61\u3080"
   callTiming: 04000000
   callMethod:
-  - RandomDamage
+  - RandomCount
   methodValue1:
   - -30
   methodValue2:
@@ -30,9 +30,10 @@ MonoBehaviour:
   - "\u306E"
   - attackName
   moveTextName: "\u7D61\u3080"
-  power: 0
+  power: 30
   accuracy: 100
   pp: 20
   speed: 0
   type: 3
+  isAttack: 1
   needAbility: 1

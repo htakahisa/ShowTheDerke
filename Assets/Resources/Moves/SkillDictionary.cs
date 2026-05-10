@@ -20,6 +20,7 @@ public class SkillDictionary : ScriptableObject
     public int pp;              // ‹Z‚Ì‰ñ”
     public int speed;
     public TypeMap.SpecificType type;         // ƒ^ƒCƒv (—á: ‰Š, …, ‘)
+    public bool isAttack = false;
     public bool needAbility = false;
 
     public enum Timing

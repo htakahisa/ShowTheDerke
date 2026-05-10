@@ -108,10 +108,10 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  maxHp: 90
-  hp: 90
-  speed: 50
-  attack: 150
+  maxHp: 145
+  hp: 145
+  speed: 90
+  attack: 165
   defensive: 100
   accuracy: 100
   ability: {fileID: 0}

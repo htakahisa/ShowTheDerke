@@ -27,7 +27,7 @@ MonoBehaviour:
   - attacker
   - "\u306E"
   - attackName
-  - '!'
+  - "\u3002"
   - defender
   - "\u306F\u707C\u71B1\u306B\u713C\u304B\u308C\u3001\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F!"
   moveTextName: "\u30D5\u30A1\u30A4\u30A2\u30FC\u30B9\u30D1\u30A4\u30AF"
@@ -36,4 +36,5 @@ MonoBehaviour:
   pp: 20
   speed: 0
   type: 2
+  isAttack: 1
   needAbility: 0

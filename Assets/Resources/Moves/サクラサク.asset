@@ -26,7 +26,7 @@ MonoBehaviour:
   - list:
     - attacker
     - "\u306E"
-    - "\u9632\u5FA1\u529B\u304C50\u4E0B\u304C\u3063\u305F"
+    - "\u9632\u5FA1\u529B\u304C\u4E0B\u304C\u3063\u305F"
   textCode:
   - attacker
   - "\u306E"
@@ -37,4 +37,5 @@ MonoBehaviour:
   pp: 10
   speed: 0
   type: 6
+  isAttack: 1
   needAbility: 1

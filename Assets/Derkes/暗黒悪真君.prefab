@@ -108,17 +108,19 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  maxHp: 130
-  hp: 130
-  speed: 130
-  attack: 130
-  defensive: 130
+  maxHp: 150
+  hp: 150
+  speed: 150
+  attack: 150
+  defensive: 150
   accuracy: 100
+  ability: {fileID: 0}
   isAlive: 1
   isAbility: 1
   canEscape: 1
   type: 2
   effection: 
+  hasEntryProcess: 0
   skill:
   - "\u5384\u707D"
   - "\u30B5\u30F3\u30C0\u30FC\u30DC\u30EB\u30C8"

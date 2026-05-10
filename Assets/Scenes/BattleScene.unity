@@ -172,7 +172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: "\u304A\u3082\u3053"
-  cost: 10
+  cost: 100
+  costText: {fileID: 424778229}
 --- !u!114 &8486865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1389,7 +1390,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
   m_sharedMaterial: {fileID: 8989802956380951798, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
@@ -1522,7 +1523,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: "\u30DF\u30AF\u30B9\u30A6\u30A7\u30EB"
-  cost: 100
+  cost: 200
+  costText: {fileID: 1336394737}
 --- !u!114 &452935261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1812,7 +1814,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 30
+  m_text: 210
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
   m_sharedMaterial: {fileID: 8989802956380951798, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
@@ -2029,7 +2031,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: "\u30F4\u30A3\u30AA\u30EB\u30FB\u30EC\u30AA"
-  cost: 500
+  cost: 300
+  costText: {fileID: 1267402815}
 --- !u!114 &680379452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2439,7 +2442,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3068\u3046\u3084\u307E\u306F\u3001\u5F37\u904B\u3068\u3044\u3046\u7834\u683C\u306E\u5C02\u7528\u6280\u3092\u6240\u6709\u3059\u308B\u3002\u5148\u5236\u6280\u3067\u3042\u308A\u306A\u304C\u3089\u706B\u529B150\u3068\u3001\u3068\u3093\u3067\u3082\u306A\u3044\u653B\u6483\u529B\u3092\u51FA\u529B\u3059\u308B\u304C\u3001\u30B9\u30D4\u30FC\u30C9\u3084\u5909\u5316\u6280\u306B\u6B20\u3051\u308B\u3053\u3068\u304C\u5F31\u70B9\u3068\u3044\u3048\u308B\u3002"
+  m_text: "\u3068\u3046\u3084\u307E\u306F\u3001\u300C\u8C6A\u904B\u300D\u3068\u3044\u3046\u7834\u683C\u306E\u5C02\u7528\u6280\u3092\u6240\u6709\u3059\u308B\u3002\u5148\u5236\u6280\u3067\u3042\u308A\u306A\u304C\u3089\u706B\u529B150\u3068\u3001\u3068\u3093\u3067\u3082\u306A\u3044\u653B\u6483\u529B\u3092\u51FA\u529B\u3059\u308B\u304C\u3001\u30B9\u30D4\u30FC\u30C9\u3084\u5909\u5316\u6280\u306B\u6B20\u3051\u308B\u3053\u3068\u304C\u5F31\u70B9\u3068\u3044\u3048\u308B\u3002"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
   m_sharedMaterial: {fileID: 8989802956380951798, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
@@ -3251,7 +3254,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 200
+  m_text: 250
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
   m_sharedMaterial: {fileID: 8989802956380951798, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
@@ -3388,7 +3391,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u30D0\u30A4\u30F3\u30C9\u30AB\u30EB\u30B9\u3068\u3044\u3046\u3001\u5F37\u529B\u306A\u5909\u5316\u6280\u3092\u6301\u3061\u3001\u30B7\u30F3\u30D7\u30EB\u304B\u3064\u9AD8\u6027\u80FD\u306A\u56DE\u5FA9\u6280\u3001\u30D2\u30FC\u30EB\u30A4\u30F3\u30D2\u30FC\u30EB\u3067\u306E\u9AD8\u8010\u4E45\u3092\u6301\u3061\u3001\u706B\u529B\u3082\u7533\u3057\u5206\u306A\u3044\u3002\u30B9\u30D4\u30FC\u30C9\u304C\u9045\u3044\u3053\u3068\u304C\u552F\u4E00\u5F31\u70B9\u3068\u3044\u3048\u308B\u3002"
+  m_text: "\u300C\u546A\u3044\u300D\u3068\u3044\u3046\u3001\u5F37\u529B\u306A\u5909\u5316\u6280\u3092\u6301\u3061\u3001\u30B7\u30F3\u30D7\u30EB\u304B\u3064\u9AD8\u6027\u80FD\u306A\u56DE\u5FA9\u6280\u3001\u300C\u30D2\u30FC\u30EB\u30A4\u30F3\u30D2\u30FC\u30EB\u300D\u3067\u306E\u9AD8\u8010\u4E45\u3092\u6301\u3061\u3001\u706B\u529B\u3082\u7533\u3057\u5206\u306A\u3044\u3002\u30B9\u30D4\u30FC\u30C9\u304C\u9045\u3044\u3053\u3068\u304C\u552F\u4E00\u5F31\u70B9\u3068\u3044\u3048\u308B\u3002"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
   m_sharedMaterial: {fileID: 8989802956380951798, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
@@ -3886,7 +3889,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 50
+  m_text: 170
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
   m_sharedMaterial: {fileID: 8989802956380951798, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
@@ -4098,7 +4101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 500
+  m_text: 300
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
   m_sharedMaterial: {fileID: 8989802956380951798, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
@@ -4235,7 +4238,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 20
+  m_text: 150
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
   m_sharedMaterial: {fileID: 8989802956380951798, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
@@ -4372,7 +4375,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 200
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
   m_sharedMaterial: {fileID: 8989802956380951798, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
@@ -5127,7 +5130,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u304A\u3082\u3053\u306F\u3001\u30B9\u30D4\u30FC\u30C9\u306B\u7279\u5316\u3057\u305F\u30A2\u30BF\u30C3\u30AB\u30FC\u3067\u3001\u5C02\u7528\u6280\u30B5\u30DE\u30FC\u30BD\u30EB\u30C8\u3092\u4F7F\u3063\u305F\u30C6\u30AF\u30CB\u30AB\u30EB\u306A\u30D7\u30EC\u30A4\u3092\u53EF\u80FD\u306B\u3059\u308B\u3002\u8010\u4E45\u6027\u306B\u6B20\u3051\u308B\u3082\u306E\u306E\u300110Shadows\u3067\u8CFC\u5165\u3067\u304D\u308B\u3068\u8003\u3048\u308B\u3068\u3001\u30B3\u30B9\u30C8\u30D1\u30D5\u30A9\u30FC\u30DE\u30F3\u30B9\u306F\u9AD8\u3044\u3068\u3044\u3048\u308B\u3002"
+  m_text: "\u304A\u3082\u3053\u306F\u3001\u30B9\u30D4\u30FC\u30C9\u306B\u7279\u5316\u3057\u305F\u30A2\u30BF\u30C3\u30AB\u30FC\u3067\u3001\u5C02\u7528\u6280\u300C\u30B5\u30DE\u30FC\u30BD\u30EB\u30C8\u300D\u3092\u4F7F\u3063\u305F\u30C6\u30AF\u30CB\u30AB\u30EB\u306A\u30D7\u30EC\u30A4\u3092\u53EF\u80FD\u306B\u3059\u308B\u3002\u307E\u305F\u3001\u300C\u304A\u7B11\u3044\u300D\u3068\u3044\u3046\u5F37\u529B\u306A\u5909\u5316\u6280\u3092\u6301\u3061\u524D\u306E\u30B9\u30D4\u30FC\u30C9\u304B\u3089\u653E\u3066\u308B\u306E\u306F\u3068\u3066\u3082\u5F37\u529B\u3002\u4F53\u529B\u306B\u6B20\u3051\u308B\u3082\u306E\u306E\u3001\u9632\u5FA1\u529B\u3068\u300C\u304A\u7B11\u3044\u300D\u306B\u3088\u308A\u3001\u305D\u3082\u305D\u3082\u4F53\u529B\u3092\u524A\u3089\u308C\u306B\u304F\u3044\u3002"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
   m_sharedMaterial: {fileID: 8989802956380951798, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
@@ -5460,7 +5463,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u653B\u6483\u3057\u306A\u304C\u3089\u56DE\u5FA9\u3067\u304D\u308B\u3001\u30B5\u30C3\u30AD\u30F3\u30B0\u3068\u3001\u5727\u5012\u7684\u306A\u9632\u5FA1\u529B\u3092\u6301\u3061\u3001\u4F53\u529B\u304C\u5C11\u306A\u3044\u3053\u3068\u3067\u5B9A\u6570\u56DE\u5FA9\u306E\u6280\u3068\u3068\u3066\u3082\u76F8\u6027\u304C\u826F\u3044\u3002\u307E\u305F\u3001\u30D0\u30A4\u30F3\u30C9\u30AB\u30EB\u30B9\u3092\u6301\u3061\u3001\u5909\u5316\u6280\u3082\u5F37\u529B\u3002\u4F4E\u901F\u7CFB\u30A2\u30BF\u30C3\u30AB\u30FC\u3068\u3057\u3066\u306F\u7121\u985E\u306E\u5F37\u3055\u3092\u8A87\u308B\u3002"
+  m_text: "\u653B\u6483\u3057\u306A\u304C\u3089\u56DE\u5FA9\u3067\u304D\u308B\u3001\u300C\u5438\u3044\u4ED8\u304F\u300D\u3068\u3001\u5727\u5012\u7684\u306A\u9632\u5FA1\u529B\u3092\u6301\u3061\u3001\u4F53\u529B\u304C\u5C11\u306A\u3044\u3053\u3068\u3067\u5B9A\u6570\u56DE\u5FA9\u306E\u6280\u3068\u3068\u3066\u3082\u76F8\u6027\u304C\u826F\u3044\u3002\u307E\u305F\u3001\u300C\u546A\u3044\u300D\u3092\u6301\u3061\u3001\u5909\u5316\u6280\u3082\u5F37\u529B\u3002\u4F4E\u901F\u7CFB\u30A2\u30BF\u30C3\u30AB\u30FC\u3068\u3057\u3066\u306F\u7121\u985E\u306E\u5F37\u3055\u3092\u8A87\u308B\u3002"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
   m_sharedMaterial: {fileID: 8989802956380951798, guid: 67d4c3429729ece44bb82ce84936ba19, type: 2}
@@ -5593,7 +5596,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: "\u3068\u3046\u3084\u307E"
-  cost: 20
+  cost: 150
+  costText: {fileID: 1269378062}
 --- !u!114 &1613532610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5741,7 +5745,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: "\u30A8\u30EC\u30B9\u30C8\u30D5\u30A7\u30A4\u30AF"
-  cost: 50
+  cost: 170
+  costText: {fileID: 1210939206}
 --- !u!114 &1617306477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5889,7 +5894,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: "\u30B8\u30E3\u30F3\u30D1\u30FC"
-  cost: 30
+  cost: 210
+  costText: {fileID: 606921505}
 --- !u!114 &1649687913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6882,7 +6888,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: "\u6697\u9ED2\u60AA\u771F\u541B"
-  cost: 200
+  cost: 250
+  costText: {fileID: 990179824}
 --- !u!114 &2106519644
 MonoBehaviour:
   m_ObjectHideFlags: 0

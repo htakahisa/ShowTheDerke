@@ -36,4 +36,5 @@ MonoBehaviour:
   pp: 5
   speed: 1
   type: 4
+  isAttack: 1
   needAbility: 0

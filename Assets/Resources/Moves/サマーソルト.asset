@@ -29,11 +29,13 @@ MonoBehaviour:
   textCode:
   - attacker
   - "\u306E"
-  - "\u30B5\u30DE\u30FC\u30BD\u30EB\u30C8\u3002\u8E74\u308A\u4E0A\u3052\u305F\u5F8C\u4E0B\u304C\u3063\u305F"
+  - attackName
+  - "\u3002\u8E74\u308A\u4E0A\u3052\u305F\u5F8C\u4E0B\u304C\u3063\u305F"
   moveTextName: "\u30B5\u30DE\u30FC\u30BD\u30EB\u30C8"
   power: 65
   accuracy: 100
   pp: 10
   speed: 0
   type: 4
+  isAttack: 1
   needAbility: 1

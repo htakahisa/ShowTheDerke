@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
 using System.Threading.Tasks;
-using UnityEditor.Experimental.GraphView;
+using UnityEditor;
 using UnityEngine;
 
 public class PhaseManager : NetworkBehaviour
@@ -25,6 +25,8 @@ public class PhaseManager : NetworkBehaviour
 
     private NetworkIdentity netIdentity;
     private PlayerData playerData;
+
+    public int attackCount;
 
     // Action ではなく Func を使い、最後に戻り値の型（UniTask）を指定する
     private Dictionary<string, Func<string, string, string, UniTask>> methodDictionary;
@@ -56,7 +58,6 @@ public class PhaseManager : NetworkBehaviour
             {
                 { "SetBattleDerke", SetBattleDerke },
                 { "SetStatus", SetStatus },
-                { "RandomDamage", RandomDamage }
             };
 
         }
@@ -84,7 +85,7 @@ public class PhaseManager : NetworkBehaviour
     }
 
     [Server]
-    public void SelectMove(NetworkIdentity player, string moveName)
+    public async UniTask SelectMove(NetworkIdentity player, string moveName)
     {
         PlayerData playerData = player == player1.netIdentity ? player1 : player2;
         playerData.selectedMove = moveName;
@@ -96,7 +97,7 @@ public class PhaseManager : NetworkBehaviour
 
         if (player1Ready && player2Ready)
         {
-            ResolveTurnOrder();
+            await ResolveTurnOrder();
         }
     }
 
@@ -117,7 +118,7 @@ public class PhaseManager : NetworkBehaviour
         }
         else
         {
-            Debug.LogError($"Method '{methodName}' not found in dictionary.");
+            Debug.Log($"Method '{methodName}' not found in dictionary.");
         }
     }
 
@@ -216,62 +217,102 @@ public class PhaseManager : NetworkBehaviour
             await ServerExecuteAttack(defender.netIdentity, defender.selectedMove, defender, attacker, true);
         }
 
-        if (attacker.GetBattleDerkeStatus() != null)
-        {
-            if (attacker.GetBattleDerkeStatus().hp <= 0)
-            {
-                attacker.GetBattleDerkeStatus().isAlive = false;
-                ServerTurnEnd();
-            }
-        }
-        if (defender.GetBattleDerkeStatus() != null)
-        {
-            if (defender.GetBattleDerkeStatus().hp <= 0)
-            {
-                defender.GetBattleDerkeStatus().isAlive = false;
-                ServerTurnEnd();
-            }
-        }
-
     }
 
     [Server]
     public async UniTask ServerExecuteAttack(NetworkIdentity player, string move, PlayerData attacker, PlayerData defender, bool isSecond)
     {
+
         // ここでダメージ計算やアニメーションを実装
         SkillDictionary skill = SkillDatabase.GetMove(move);
+
+        bool random = false;
+
+
+        for (int i = 0; i < skill.callMethod.Count; i++)
+        {
+
+            if (skill.callMethod[i] == "RandomCount")
+            {
+                random = true;
+                await RandomCountProcess(player, skill, attacker, defender, isSecond, i);
+            }
+
+        }
+        
+
+        if(!random)
+        {
+            await ServerAttackProcess(player, skill, attacker, defender, isSecond, true);
+        }
+
+        if (defender.GetBattleDerkeStatus() != null)
+        {
+            if (defender.GetBattleDerkeStatus().hp <= 0)
+            {
+                defender.GetBattleDerkeStatus().isAlive = false;
+                Invoke("ServerTurnEnd", 3f);
+            }
+        }
+
+        if (isSecond)
+        {
+            Invoke("ServerTurnEnd", 3f);
+
+        }
+
+    }
+
+    public async UniTask ServerAttackProcess(NetworkIdentity player, SkillDictionary skill, PlayerData attacker, PlayerData defender, bool isSecond, bool isSingle)
+    {
+
+        if (isSingle)
+        {
+            attackCount = 0;
+        }
+
         if (attacker != null && attacker.GetBattleDerkeStatus() != null)
         {
+            DerkeStatus defenderStatus = defender.GetBattleDerkeStatus();
+
+            if (defenderStatus.ability != null)
+            {
+                for (int skillI = 0; skillI < defenderStatus.ability.skill.Count; skillI++)
+                {
+                    if (defenderStatus.ability.callTiming[skillI] == AbilityDictionary.Timing.BEFOREATTACKED)
+                    {
+                        for (int methodI = 0; methodI < defenderStatus.ability.skill[skillI].callMethod.Count; methodI++)
+                        {
+
+                            await UniTask.Delay(1000);
+                            await ActiveAbility(SkillDictionary.Timing.ENTRY, defenderStatus.ability, defenderStatus.ability.skill[skillI], defender, attacker);
+
+                        }
+                    }
+                }
+            }
             if (attacker.GetBattleDerkeStatus().isAbility)
             {
+                await UniTask.Delay(1000);
                 await ActiveEffect(SkillDictionary.Timing.BEFOREATTACK, skill, attacker, defender);
             }
         }
 
-        await UniTask.Delay(1000);
 
-        if (defender != null && defender.GetBattleDerkeStatus() != null)
-        {
-            if (defender.GetBattleDerkeStatus() != null)
-            {
-                if (defender.GetBattleDerkeStatus().hp <= 0)
-                {
-                    defender.GetBattleDerkeStatus().isAlive = false;
-                    ServerTurnEnd();
-                }
-            }
-        }
-
-        if (move != null)
+        if (skill != null)
         {
             Debug.Log($"技: {skill.moveName}, 威力: {skill.power}, 命中率: {skill.accuracy}%");
         }
 
+
         bool isHit = true;
 
-        if (attacker.GetBattleDerkeStatus() != null)
+        if (isSingle)
         {
-            isHit = UnityEngine.Random.Range(1, 101) <= skill.accuracy * attacker.GetBattleDerkeStatus().accuracy * 0.01f;
+            if (attacker.GetBattleDerkeStatus() != null)
+            {
+                isHit = UnityEngine.Random.Range(1, 101) <= skill.accuracy * attacker.GetBattleDerkeStatus().accuracy * 0.01f;
+            }
         }
 
         await UniTask.Delay(1000);
@@ -291,7 +332,14 @@ public class PhaseManager : NetworkBehaviour
             float effectBonus = effect.Item1;
             float evolutionBonus = evolution.Item1;
 
-            defender.GetBattleDerkeStatus().hp -= (int)((float)(skill.power + attacker.GetBattleDerkeStatus().attack - defender.GetBattleDerkeStatus().defensive) * 0.8f * effectBonus * evolutionBonus);
+            int damage = (int)(skill.power * ((float)attacker.GetBattleDerkeStatus().attack / (float)defender.GetBattleDerkeStatus().defensive) * effectBonus * evolutionBonus);
+
+            if(damage <= 0)
+            {
+                damage = 1;
+            }
+
+            defender.GetBattleDerkeStatus().hp -= damage;
         }
 
 
@@ -301,28 +349,35 @@ public class PhaseManager : NetworkBehaviour
 
         if (isHit)
         {
-            for (int i = 0; i < skill.textCode.Count; i++)
+            if (isSingle || attackCount <= 0)
             {
-                string code = "";
-                if (attacker.GetBattleDerke() != null && skill.textCode[i] == "attacker" && attacker.GetBattleDerke() != null)
+                for (int i = 0; i < skill.textCode.Count; i++)
                 {
-                    code = attacker.GetBattleDerke().name;
-                }
-                else if (defender.GetBattleDerke() != null && skill.textCode[i] == "defender" && defender != null)
-                {
-                    code = defender.GetBattleDerke().name;
-                }
-                else if (skill.textCode[i] == "attackName" && skill != null)
-                {
-                    code = skill.moveTextName;
-                }
-                else
-                {
-                    code = skill.textCode[i];
-                }
+                    string code = "";
+                    if (attacker.GetBattleDerke() != null && skill.textCode[i] == "attacker" && attacker.GetBattleDerke() != null)
+                    {
+                        code = attacker.GetBattleDerke().name;
+                    }
+                    else if (defender.GetBattleDerke() != null && skill.textCode[i] == "defender" && defender != null)
+                    {
+                        code = defender.GetBattleDerke().name;
+                    }
+                    else if (skill.textCode[i] == "attackName" && skill != null)
+                    {
+                        code = skill.moveTextName;
+                    }
+                    else
+                    {
+                        code = skill.textCode[i];
+                    }
 
-                text += code;
+                    text += code;
 
+                }
+            }
+            else
+            {
+                text = attackCount.ToString() + "回目";
             }
 
 
@@ -356,7 +411,7 @@ public class PhaseManager : NetworkBehaviour
 
         BattleTextManager.btm.ServerSetText(text);
 
-        if (isServer && attacker.GetBattleDerkeStatus().isAbility)
+        if (isServer && attacker.GetBattleDerkeStatus().isAbility && isHit)
         {
             await ActiveEffect(SkillDictionary.Timing.AFTERATTACK, skill, attacker, defender);
         }
@@ -366,31 +421,13 @@ public class PhaseManager : NetworkBehaviour
             defender.GetBattleDerkeStatus().type = skill.type;
         }
 
-        if (defender.GetBattleDerkeStatus() != null)
+        if (!isSingle)
         {
-            if (defender.GetBattleDerkeStatus().hp <= 0)
-            {
-                defender.GetBattleDerkeStatus().isAlive = false;
-                Invoke("ServerTurnEnd", 3f);
-            }
+            attackCount++;
         }
 
-        if (isSecond)
-        {
-            Invoke("ServerTurnEnd", 3f);
-
-        }
-
-        //RpcExecuteAttack(attacker.netIdentity, attacker.selectedMove, attacker, defender, isHit, skill, isSecond);
     }
 
-
-    [ClientRpc]
-    public void RpcExecuteAttack(NetworkIdentity player, string move, PlayerData attacker, PlayerData defender, bool isHit, SkillDictionary skill, bool isSecond)
-    {
-
-
-    }
 
     [Server]
     public void ServerTurnEnd()
@@ -446,7 +483,6 @@ public class PhaseManager : NetworkBehaviour
 
     public async UniTask ActiveEffect(SkillDictionary.Timing timing, SkillDictionary skill, PlayerData attacker, PlayerData defender)
     {
-        await UniTask.Delay(1000);
 
         if (skill != null)
         {
@@ -459,6 +495,8 @@ public class PhaseManager : NetworkBehaviour
                     {
                         break;
                     }
+
+                    await UniTask.Delay(1000);
 
                     string first = skill.methodValue1[i];
                     string second = skill.methodValue2[i];
@@ -562,11 +600,17 @@ public class PhaseManager : NetworkBehaviour
                     if (!derkeStatus.hasEntryProcess)
                     {
                         derkeStatus.hasEntryProcess = true;
-                        await UniTask.Delay(500);
 
                         for (int i = 0; i < derkeStatus.ability.skill.Count; i++)
                         {
-                            await ActiveAbility(SkillDictionary.Timing.ENTRY, derkeStatus.ability, derkeStatus.ability.skill[i], pd, pd ? player1 : player2);
+                            if (derkeStatus.ability.callTiming[i] == AbilityDictionary.Timing.ENTRY)
+                            {
+                                for (int skillI = 0; skillI < derkeStatus.ability.skill.Count; skillI++)
+                                {
+                                    await UniTask.Delay(500);
+                                    await ActiveAbility(SkillDictionary.Timing.ENTRY, derkeStatus.ability, derkeStatus.ability.skill[i], pd, pd == player1 ? player2 : player1);
+                                }
+                            }
                         }
                     }
                 }
@@ -580,21 +624,61 @@ public class PhaseManager : NetworkBehaviour
 
     public async UniTask SetStatus(string status, string value, string ID)
     {
+
+        int.TryParse(value, out int intValue);
+
         await UniTask.Delay(100);
 
         if (NetworkServer.spawned.TryGetValue(uint.Parse(ID), out NetworkIdentity identity))
         {
-            DerkeStatus derkeStatus = identity.GetComponent<PlayerData>().GetBattleDerkeStatus();
+            PlayerData attacker = identity.GetComponent<PlayerData>();
+            PlayerData defender = attacker == player1 ? player2 : player1; 
+            DerkeStatus derkeStatus = attacker.GetBattleDerkeStatus();
+
+            if (derkeStatus.ability != null)
+            {
+                for (int skillI = 0; skillI < derkeStatus.ability.skill.Count; skillI++)
+                {
+                    if (derkeStatus.ability.callTiming[skillI] == AbilityDictionary.Timing.STATUSCHANGE)
+                    {
+                        for (int methodI = 0; methodI < derkeStatus.ability.skill[skillI].callMethod.Count; methodI++)
+                        {
+                            if (derkeStatus.ability.skill[skillI].callMethod[methodI] == "Times")
+                            {
+                                if (status == derkeStatus.ability.skill[skillI].methodValue1[methodI])
+                                {
+                                    intValue *= int.Parse(derkeStatus.ability.skill[skillI].methodValue2[methodI]);
+
+
+                                    await UniTask.Delay(1000);
+
+
+                                    await ActiveAbility(SkillDictionary.Timing.ENTRY, derkeStatus.ability, derkeStatus.ability.skill[skillI], attacker, defender);
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
 
             if (status == "maxHp")
-                derkeStatus.maxHp += int.Parse(value);
+                derkeStatus.maxHp += intValue;
 
             if (status == "hp")
             {
-                int hpValue = int.Parse(value);
+                int hpValue = intValue;
 
-                foreach(var timing in derkeStatus.ability.callTiming)
-                if(timing == AbilityDictionary.Timing.HEAL)
+                if (derkeStatus.hp + hpValue > derkeStatus.maxHp)
+                {
+                    hpValue = derkeStatus.maxHp - derkeStatus.hp;
+                }
+                derkeStatus.hp += hpValue;
+            }
+
+            if (status == "hpHeal")
+            {
+                int hpValue = intValue;
 
                 if (derkeStatus.hp + hpValue > derkeStatus.maxHp)
                 {
@@ -604,19 +688,19 @@ public class PhaseManager : NetworkBehaviour
             }
 
             if (status == "speed")
-                derkeStatus.speed += int.Parse(value);
+                derkeStatus.speed += intValue;
 
             if (status == "attack")
-                derkeStatus.attack += int.Parse(value);
+                derkeStatus.attack += intValue;
 
             if (status == "defensive")
-                derkeStatus.defensive += int.Parse(value);
+                derkeStatus.defensive += intValue;
 
             if (status == "accuracy")
-                derkeStatus.accuracy += int.Parse(value);
+                derkeStatus.accuracy += intValue;
 
             if (status == "isAbility")
-                derkeStatus.isAbility = Convert.ToBoolean(value);
+                derkeStatus.isAbility = Convert.ToBoolean(intValue);
 
             if (status == "canEscape")
                 derkeStatus.canEscape = Convert.ToBoolean(value);
@@ -628,23 +712,16 @@ public class PhaseManager : NetworkBehaviour
 
     }
 
-    public async UniTask RandomDamage(string value, string maxCount, string ID)
-    {
-        await UniTask.Delay(100);
-        StartCoroutine(RandomCoroutine(value, maxCount, ID));
-    }
 
-
-    public IEnumerator RandomCoroutine(string value, string maxCount, string ID)
+    public async UniTask RandomCountProcess(NetworkIdentity player, SkillDictionary skill, PlayerData attacker, PlayerData defender, bool isSecond, int index)
     {
-        if (NetworkServer.spawned.TryGetValue(uint.Parse(ID), out NetworkIdentity identity))
+
+        for (int count = 0; count < UnityEngine.Random.Range(1, int.Parse(skill.methodValue2[index] + 1)); count++)
         {
-            for (int count = 0; count < UnityEngine.Random.Range(1, int.Parse(maxCount) + 1); count++)
-            {
-                identity.GetComponent<PlayerData>().GetBattleDerkeStatus().hp += int.Parse(value);
-                yield return new WaitForSeconds(0.5f);
-            }
+            await ServerAttackProcess(player, skill, attacker, defender, isSecond, false);
+            await UniTask.Delay(500);
         }
+        
     }
 
 }

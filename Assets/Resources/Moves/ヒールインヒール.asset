@@ -17,7 +17,7 @@ MonoBehaviour:
   callMethod:
   - SetStatus
   methodValue1:
-  - hp
+  - hpHeal
   methodValue2:
   - 50
   methodValue3:
